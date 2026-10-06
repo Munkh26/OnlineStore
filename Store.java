@@ -1,3 +1,7 @@
+//Name: Munkhsoyombo Munkhbat
+
+
+
 /*Implement the following functionality into the store:
 
   instance variables: 
@@ -21,17 +25,51 @@
 
     Where these variables are stored and how to name them is up to you!
 */
+import java.util.*;
+
 public class Store
 {
-  double profit;
-  ArrayList<ItemForSale> items;
+  private double profit;
+  private ArrayList<ItemForSale> items;
 
   public Store() {
     profit = 0;
+    items = new ArrayList<ItemForSale>();
   }
 
+  public void showItems() {
+    String result = "";
+    for (int i = 0; i < items.size(); i++) {
+      result += items.get(i).getItemName() + ", ";
+    }
+    System.out.println(result);
+  }
 
+  public void addItem(ItemForSale item) {
+    items.add(item);
+  }
 
+  public void sellItem(String itemName) {
+    for (int i = 0; i < items.size(); i++) {
+      if (items.get(i).getItemName().equals(itemName)) {
+        profit += items.get(i).getPrice();
+        items.remove(i);
+        i--;
+      }
+    }
+  }
+
+  public void creator(String itemName) {
+    for (int i = 0; i < items.size(); i++) {
+      if (items.get(i).getItemName().equals(itemName)) {
+        System.out.println(items.get(i).getAuthor().name);
+      }
+    }
+  }
+
+  public double getProfit(){
+    return profit;
+  }
 
 
 }

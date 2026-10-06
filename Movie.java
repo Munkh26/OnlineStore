@@ -1,13 +1,11 @@
 public class Movie extends ItemForSale
 {
-    Author author;
-    double duration;
+    private double duration;
+    private Author author;
 
-    public Movie(double dur, String date, double price) {
-        super("Movie", date, price);
+    public Movie(String name, String date, double price, Author author, double dur) {
+        super(name, date, price, author);
         duration = dur;
     }
-
-
 
 }
