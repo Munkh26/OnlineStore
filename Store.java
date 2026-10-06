@@ -1,6 +1,6 @@
 //Name: Munkhsoyombo Munkhbat
-
-
+//Date: 10/06/2026
+//Description: Make a onlineStore where you can add items like books and movies for sale, and you can sell those products to increase the store profit. You are also able to get the specific product's properties like author's name, title, etc. 
 
 /*Implement the following functionality into the store:
 
@@ -29,47 +29,56 @@ import java.util.*;
 
 public class Store
 {
+  // Instance Variables
   private double profit;
   private ArrayList<ItemForSale> items;
 
+  // Constructor
   public Store() {
     profit = 0;
     items = new ArrayList<ItemForSale>();
   }
 
+  // Methods
+  // It shows all the items for sale
   public void showItems() {
     String result = "";
     for (int i = 0; i < items.size(); i++) {
-      result += items.get(i).getItemName() + ", ";
+      result += "[" + items.get(i).getItemName() + "]";
     }
     System.out.println(result);
   }
 
+  //Adds a item to ItemForSale
   public void addItem(ItemForSale item) {
-    items.add(item);
+    if (item != null) {
+      items.add(item);
+    }
   }
 
+  //Sells the item from the ItemForSale (if there is duplicate, it only sells one)
   public void sellItem(String itemName) {
     for (int i = 0; i < items.size(); i++) {
       if (items.get(i).getItemName().equals(itemName)) {
         profit += items.get(i).getPrice();
         items.remove(i);
-        i--;
+        return;
       }
     }
   }
 
+  //Shows who created the ItemForSale like the author's name (if there is duplicate products like two same books, it only shows one author's name)
   public void creator(String itemName) {
     for (int i = 0; i < items.size(); i++) {
       if (items.get(i).getItemName().equals(itemName)) {
-        System.out.println(items.get(i).getAuthor().name);
+        System.out.println(items.get(i).getAuthor().getName());
+        return;
       }
     }
   }
 
+  //Shows the total profit
   public double getProfit(){
     return profit;
   }
-
-
 }
