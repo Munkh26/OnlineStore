@@ -23,5 +23,15 @@
 */
 public class Store
 {
+  double profit;
+  ArrayList<ItemForSale> items;
+
+  public Store() {
+    profit = 0;
+  }
+
+
+
+
 
 }
